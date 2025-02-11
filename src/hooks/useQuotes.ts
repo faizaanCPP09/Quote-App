@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Quote } from '../types/Quote';
 
 const useQuotes = (page: number) => {
@@ -11,9 +12,7 @@ const useQuotes = (page: number) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`https://dummyjson.com/quotes?limit=10&skip=${(page - 1) * 10}`);
-        if (!response.ok) throw new Error('Failed to fetch quotes');
-        const data = await response.json();
+        const { data } = await axios.get(`https://dummyjson.com/quotes?limit=10&skip=${(page - 1) * 10}`);
         setQuotes(data.quotes);
       } catch (error) {
         setError(error instanceof Error ? error.message : 'An error occurred');

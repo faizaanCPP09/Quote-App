@@ -23,6 +23,7 @@ const App: React.FC = () => {
 
   
   useEffect(() => {
+    console.log("checking..")
     const root = document.documentElement;
     if (darkMode) {
       root.classList.add('dark');
