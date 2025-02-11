@@ -1,3 +1,4 @@
+//This is a custom react hook
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Quote } from '../types/Quote';
